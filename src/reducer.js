@@ -2,7 +2,7 @@ const initialState = {
   cards: [],
   loading: false,
   decks: [],
-  searchVal: ''
+  searchVal: null
 }
 
 const NEW_DECK = 'NEW_DECK'

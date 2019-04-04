@@ -6,8 +6,13 @@ import '../css/CardContainer.css'
 
 const CardContainer = (props) => {
 const handleClick = () =>{
-    props.drawFive(props.searchVal)
+    if(props.decks.includes(parseInt(props.searchVal))){
+      props.drawFive(props.searchVal)
+    } else {
+      alert('deck doesnt exist!')
+    }
   }
+
   return(
     <div>
       <input onChange={props.setSearchVal}/>
