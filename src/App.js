@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import CardContainer from './containers/CardContainer'
-
+import { connect } from 'react-redux'
+import { getAllDecks } from './actions'
 class App extends Component {
-
-
+  constructor(props){
+    super(props)
+  }
+//remember to mention turn off addblock in README (Ace of Diamonds Photo)
+  componentDidMount(){
+    this.props.getAllDecks()
+  }
   render() {
     return (
       <div>
@@ -13,6 +19,10 @@ class App extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch){
+  return{
+    getAllDecks: () => dispatch(getAllDecks())
+  }
+}
 
-
-export default App;
+export default connect(null, mapDispatchToProps)(App);

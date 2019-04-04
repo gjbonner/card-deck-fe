@@ -5,6 +5,15 @@ export function newDeck(){
   }
 }
 
+export function getAllDecks(){
+  return dispatch => {
+    return fetch('http://localhost:3000/api/v1/decks')
+    .then(r => r.json())
+    .then(json => {
+      dispatch({type: 'GET_DECKS', payload: json})
+    })
+  }
+}
 
 export function drawFive(deck_id){
   return dispatch => {
@@ -15,5 +24,11 @@ export function drawFive(deck_id){
       dispatch({type: 'DRAW', payload: json})
       dispatch({type: 'DONE_LOADING', payload: false})
     })
+  }
+}
+
+export function setSearchVal(e){
+  return dispatch => {
+    dispatch({type: 'SET_SEARCH_VAL', payload: e.target.value})
   }
 }
