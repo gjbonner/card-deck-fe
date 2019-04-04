@@ -10,7 +10,7 @@ const handleClick = () => {
     <div>
     <button onClick={handleClick}>get cards</button>
     <h1>Im the Card Container</h1>
-    <Card />
+      {!props.loading ? props.cards.map(card => <Card card={card} key={card.id} />) : <div></div>}
     </div>
   )
 }
