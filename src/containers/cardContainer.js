@@ -14,7 +14,7 @@ const handleSearch = () =>{
       swal("Oops!", "Please Select a deck", "warning")
     }
   }
-
+  
   const deckDropDown = () => {
     const options = []
     if(props.decks.length > 0){

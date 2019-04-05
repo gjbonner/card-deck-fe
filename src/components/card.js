@@ -5,8 +5,11 @@ import '../css/Card.css'
 const Card = (props) => {
   const {card} = props
 
+  //code to interpolate for imageurl
+  //if cardcode is AD (ace of diamonds) use other source
+  //new image for AD was added  
   const imgCode = card.code.slice(card.code.length-2, card.code.length)
-  //if deck deleted is showing, remove
+  //if deck deleted is the one showing, remove
   return(
     <div>
       {props.decks.includes(card.deck_id)
