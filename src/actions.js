@@ -2,6 +2,12 @@ export function newDeck(){
   return dispatch => {
     dispatch({type: 'LOADING', payload: true})
     return fetch('http://localhost:3000/api/v1/decks/new')
+    .then(r => r.json())
+    .then(json => {
+      dispatch({type: 'NEW_DECK', payload: json})
+      dispatch({type: 'DONE_LOADING', payload: false})
+    }).then(() => dispatch(getAllDecks()))
+    .catch(error => console.log(error))
   }
 }
 
@@ -11,7 +17,20 @@ export function getAllDecks(){
     .then(r => r.json())
     .then(json => {
       dispatch({type: 'GET_DECKS', payload: json})
-    }).catch(error => console.log(error))
+    })
+  }
+}
+
+export function deleteDeck(deck_id){
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/decks/${deck_id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(deck_id)
+    }).then(() =>dispatch(getAllDecks()))
+    .catch(error => console.log(error))
   }
 }
 

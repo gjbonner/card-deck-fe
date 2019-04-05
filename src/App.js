@@ -3,9 +3,7 @@ import CardContainer from './containers/CardContainer'
 import { connect } from 'react-redux'
 import { getAllDecks } from './actions'
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
+
 //remember to mention turn off addblock in README (Ace of Diamonds Photo)
   componentDidMount(){
     this.props.getAllDecks()

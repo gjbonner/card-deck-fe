@@ -4,3 +4,11 @@
   flex-flow: row wrap;
   justify-content: space-around;
 }
+
+#search-grid{
+  margin-top: 2%;
+}
+
+#btn-group {
+  margin-top: 1%;
+}
