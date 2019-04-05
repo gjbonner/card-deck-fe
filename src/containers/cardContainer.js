@@ -55,7 +55,7 @@ const handleSearch = () =>{
         </Grid>
 
         <Container id='card-container'>
-          {!props.loading ? props.cards.map(card => <Card card={card} key={card.id} />) : <Loader active inline='centered' size='massive' />}
+          {!props.loading ? props.cards.map(card => <Card deck={card.deck_id} card={card} key={card.id} />) : <Loader active inline='centered' size='massive' />}
         </Container>
     </div>
   )
