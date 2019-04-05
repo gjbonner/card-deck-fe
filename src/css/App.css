@@ -1,0 +1,9 @@
+#background{
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: green;
+  background-image: radial-gradient(circle, #117703, #0C5408, #011B01);
+}

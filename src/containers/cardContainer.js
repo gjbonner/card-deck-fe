@@ -22,7 +22,7 @@ const handleSearch = () =>{
     } else {
       options.push({text: 'Please Create A Deck'})
     }
-    return <Form.Select fluid options={options} placeholder='Create Or Select A Deck' onChange={props.setSearchVal} />
+    return <Form.Select  fluid options={options} placeholder='Create Or Select A Deck' onChange={props.setSearchVal} />
   }
 
   const handleDelete = () => {
@@ -34,7 +34,7 @@ const handleSearch = () =>{
   }
 
   return(
-    <div>
+    <div id='main-container'>
         <Grid id='search-grid'>
           <Grid.Row centered columns={2}>
             <Grid.Column>
