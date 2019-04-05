@@ -11,7 +11,8 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui": "^2.4.2",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.86.0"
+    "semantic-ui-react": "^0.86.0",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

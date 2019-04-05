@@ -1,3 +1,4 @@
+import swal from 'sweetalert'
 export function newDeck(){
   return dispatch => {
     dispatch({type: 'LOADING', payload: true})
@@ -7,6 +8,7 @@ export function newDeck(){
       dispatch({type: 'NEW_DECK', payload: json})
       dispatch({type: 'DONE_LOADING', payload: false})
     }).then(() => dispatch(getAllDecks()))
+      .then(swal('Deck Created', '', 'success'))
     .catch(error => console.log(error))
   }
 }
@@ -30,6 +32,7 @@ export function deleteDeck(deck_id){
       },
       body: JSON.stringify(deck_id)
     }).then(() =>dispatch(getAllDecks()))
+      .then(swal('Deck deleted', '', 'success'))
     .catch(error => console.log(error))
   }
 }

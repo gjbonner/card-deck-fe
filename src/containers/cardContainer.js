@@ -3,7 +3,7 @@ import Card from '../components/Card'
 import {drawFive, setSearchVal, deleteDeck, newDeck} from '../actions'
 import { connect } from 'react-redux'
 import { Container, Form, Grid, Loader, Button } from 'semantic-ui-react'
-
+import swal from 'sweetalert'
 import '../css/CardContainer.css'
 
 const CardContainer = (props) => {
@@ -11,7 +11,7 @@ const handleSearch = () =>{
     if(props.decks.includes(parseInt(props.searchVal))){
       props.drawFive(props.searchVal)
     } else {
-      alert('Please select a deck')
+      swal("Oops!", "Please Select a deck", "warning")
     }
   }
 
@@ -25,7 +25,7 @@ const handleSearch = () =>{
     if(props.decks.includes(parseInt(props.searchVal))){
       return props.deleteDeck(props.searchVal)
     } else {
-      alert('Please select a deck')
+      swal("Oops!", "Please Select a deck", "warning")
     }
   }
 
