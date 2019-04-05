@@ -5,7 +5,6 @@ import { getAllDecks } from './actions'
 import './css/App.css'
 class App extends Component {
 
-//remember to mention turn off addblock in README (Ace of Diamonds Photo)
   componentDidMount(){
     this.props.getAllDecks()
   }
