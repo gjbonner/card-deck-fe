@@ -17,8 +17,12 @@ const handleSearch = () =>{
 
   const deckDropDown = () => {
     const options = []
-    props.decks.forEach(deck => options.push({key: deck, text: deck.toString(), value: deck}))
-    return <Form.Select fluid label='Select Deck ID' options={options} placeholder='Deck' onChange={props.setSearchVal} />
+    if(props.decks.length > 0){
+      props.decks.forEach(deck => options.push({key: deck, text: deck.toString(), value: deck}))
+    } else {
+      options.push({text: 'Please Create A Deck'})
+    }
+    return <Form.Select fluid options={options} placeholder='Create Or Select A Deck' onChange={props.setSearchVal} />
   }
 
   const handleDelete = () => {
