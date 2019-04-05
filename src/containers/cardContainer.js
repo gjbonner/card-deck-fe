@@ -2,6 +2,8 @@ import React from 'react'
 import Card from '../components/Card'
 import {drawFive, setSearchVal} from '../actions'
 import { connect } from 'react-redux'
+import { Input, Container, Form } from 'semantic-ui-react'
+
 import '../css/CardContainer.css'
 
 const CardContainer = (props) => {
@@ -13,13 +15,24 @@ const handleClick = () =>{
     }
   }
 
+  const deckDropDown = () => {
+    const options = []
+    props.decks.forEach(deck => options.push({key: deck, text: deck.toString(), value: deck}))
+    return <Form.Select fluid label='Select Deck ID' options={options} placeholder='Deck' onChange={props.setSearchVal} />
+  }
+
   return(
     <div>
-      <input onChange={props.setSearchVal}/>
-      <button onClick={handleClick}>get cards</button>
-        <div id='card-container'>
+        <Form>
+          <Form.Group>
+            {deckDropDown()}
+          </Form.Group>
+          <Form.Button onClick={handleClick}>Draw 5 Cards</Form.Button>
+
+        </Form>
+        <Container id='card-container'>
           {!props.loading ? props.cards.map(card => <Card card={card} key={card.id} />) : <div></div>}
-        </div>
+        </Container>
     </div>
   )
 }

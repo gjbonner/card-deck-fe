@@ -11,7 +11,7 @@ export function getAllDecks(){
     .then(r => r.json())
     .then(json => {
       dispatch({type: 'GET_DECKS', payload: json})
-    })
+    }).catch(error => console.log(error))
   }
 }
 
@@ -23,12 +23,12 @@ export function drawFive(deck_id){
     .then(json => {
       dispatch({type: 'DRAW', payload: json})
       dispatch({type: 'DONE_LOADING', payload: false})
-    })
+    }).catch(error => console.log(error))
   }
 }
 
 export function setSearchVal(e){
   return dispatch => {
-    dispatch({type: 'SET_SEARCH_VAL', payload: e.target.value})
+    dispatch({type: 'SET_SEARCH_VAL', payload: e.target.childNodes[0].innerHTML})
   }
 }
