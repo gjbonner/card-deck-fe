@@ -1,4 +1,5 @@
 import swal from 'sweetalert'
+
 export function newDeck(){
   return dispatch => {
     dispatch({type: 'LOADING', payload: true})
@@ -8,8 +9,12 @@ export function newDeck(){
       dispatch({type: 'NEW_DECK', payload: json})
       dispatch({type: 'DONE_LOADING', payload: false})
     }).then(() => dispatch(getAllDecks()))
-      .then(swal('Deck Created', '', 'success'))
-    .catch(error => console.log(error))
+    .catch(error => {
+      if(error){
+        swal('Oops!', "We couldn't create a new deck.", "warning")
+        dispatch({type: 'DONE_LOADING', payload: false})
+      }
+    })
   }
 }
 
@@ -31,9 +36,16 @@ export function deleteDeck(deck_id){
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(deck_id)
+    }).then(function(response){
+      if(response.ok){
+        swal('Deck Deleted','','success')
+      }
     }).then(() =>dispatch(getAllDecks()))
-      .then(swal('Deck deleted', '', 'success'))
-    .catch(error => console.log(error))
+    .catch(error => {
+      if(error){
+        swal('Oops!', "We couldn't delete your deck", 'warning')
+      }
+    })
   }
 }
 
@@ -45,7 +57,12 @@ export function drawFive(deck_id){
     .then(json => {
       dispatch({type: 'DRAW', payload: json})
       dispatch({type: 'DONE_LOADING', payload: false})
-    }).catch(error => console.log(error))
+    }).catch(error => {
+      if(error){
+        swal('Oops!', "We couldn't draw five cards at this time", 'warning')
+        dispatch({type: 'DONE_LOADING', payload: false})
+      }
+    })
   }
 }
 
